@@ -2,24 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f634257-bab5-4218-a6f0-1cbcbe36de4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/career_center/migrations/0002_institution_image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/migrations/0002_company_image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/users/company-avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/users/student-avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/users/university-avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/migrations/0005_auto_20200516_1809.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8214556-f981-4979-adc5-fb08b1d84f5d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8214556-f981-4979-adc5-fb08b1d84f5d.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8214556-f981-4979-adc5-fb08b1d84f5d/storage_v2/_src_/database/StudEmp.2KE28w/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8214556-f981-4979-adc5-fb08b1d84f5d/storage_v2/_src_/database/StudEmp.2KE28w/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/career_center/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/career_center/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/career_center/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/career_center/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/company/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/company/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/company/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/managers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studemp_back/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/studemp_back/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -179,7 +169,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589606750128</updated>
-      <workItem from="1589606751444" duration="20698000" />
+      <workItem from="1589606751444" duration="25123000" />
     </task>
     <servers />
   </component>
