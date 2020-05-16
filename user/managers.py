@@ -7,14 +7,56 @@ class CustomUserManager(BaseUserManager):
     Custom user model manager where email is the unique identifiers
     for authentication instead of usernames.
     """
-    def create_user(self, email, password, **extra_fields):
-        """
-        Create and save a User with the given email and password.
-        """
+    def create_student(self, email, password, first_name, last_name, phone_number):
+
         if not email:
             raise ValueError(_('The Email must be set'))
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+
+        user = self.model(
+            email=self.normalize_email(email),
+            first_name=first_name,
+            last_name=last_name,
+            phone_number=phone_number,
+            role="Student",
+            avatar="images/users/student-avatar.png",
+        )
+
+        user.set_password(password)
+        user.save()
+        return user
+
+    def create_company_contact_person(self, email, password, first_name, last_name, phone_number):
+
+        if not email:
+            raise ValueError(_('The Email must be set'))
+
+        user = self.model(
+            email=self.normalize_email(email),
+            first_name=first_name,
+            last_name=last_name,
+            phone_number=phone_number,
+            role="Company_contact_person",
+            avatar="images/users/company-avatar.png",
+        )
+
+        user.set_password(password)
+        user.save()
+        return user
+
+    def create_career_center_contact_person(self, email, password, first_name, last_name, phone_number):
+
+        if not email:
+            raise ValueError(_('The Email must be set'))
+
+        user = self.model(
+            email=self.normalize_email(email),
+            first_name=first_name,
+            last_name=last_name,
+            phone_number=phone_number,
+            role="Career_center_contact_person",
+            avatar="images/users/university-avatar.png",
+        )
+
         user.set_password(password)
         user.save()
         return user

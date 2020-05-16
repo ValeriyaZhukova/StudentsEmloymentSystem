@@ -8,9 +8,10 @@ from phone_field import PhoneField
 from career_center.models import Institution
 from common.models import City, Industry
 
+from .managers import CustomUserManager
+
 
 # Create your models here.
-from user.managers import CustomUserManager
 
 
 def upload_avatar(instance, filename):
@@ -25,12 +26,8 @@ def upload_resume(instance, filename):
     return 'files/resume/%s-%s-%s%s' % (instance.first_name, instance.last_name, time.time(), extension)
 
 
-class UserRole(models.Model):
-    role = models.CharField(max_length=255)
-
-
 class CustomUser(AbstractUser):
-    avatar = models.FileField(upload_to=upload_avatar, blank=True, null=True)
+
     username = None
     email = models.EmailField(_('email address'), unique=True)
 
@@ -39,9 +36,11 @@ class CustomUser(AbstractUser):
 
     objects = CustomUserManager()
 
-    phone_number = PhoneField(blank=True, help_text='Contact phone number')
+    phone_number = PhoneField(blank=True, null=True, help_text='Contact phone number')
 
-    role = models.ForeignKey(UserRole, on_delete=models.CASCADE, blank=True, null=True)
+    role = models.CharField(max_length=100, blank=False, null=False, default="role")
+
+    avatar = models.FileField(upload_to=upload_avatar, blank=True, null=True)
 
     def __str__(self):
         return self.email
@@ -55,7 +54,7 @@ class Resume(models.Model):
     education_degree = models.CharField(max_length=255)
     skills = models.CharField(max_length=2000)
     resume_file = models.FileField(upload_to=upload_resume, blank=True, null=True)
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
+    student = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
     city = models.ForeignKey(City, on_delete=models.CASCADE, blank=True, null=True)
     main_industry = models.ForeignKey(Industry, on_delete=models.CASCADE, blank=True, null=True)
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE, blank=True, null=True)

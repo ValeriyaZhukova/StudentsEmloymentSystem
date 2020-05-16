@@ -1,3 +1,5 @@
+import time
+
 from django.db import models
 
 from common.models import City, Industry
@@ -7,10 +9,17 @@ from django.conf import settings
 # Create your models here.
 
 
+def upload_company_image(instance, filename):
+    last_dot = filename.rfind('.')
+    extension = filename[last_dot:len(filename):1]
+    return 'images/companies/%s-%s%s' % (instance.name, time.time(), extension)
+
+
 class Company(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     website = models.URLField(max_length=200)
+    image = models.FileField(upload_to=upload_company_image, blank=True, null=True)
     city = models.ForeignKey(City, on_delete=models.CASCADE, blank=True, null=True)
     contact_person = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=False, null=False)
 
