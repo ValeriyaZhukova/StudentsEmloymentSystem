@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/', include('user.urls')),
     path('api/', include('company.urls')),
     path('api/', include('career_center.urls')),
+    path('api/', include('common.urls')),
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh', jwt_views.TokenRefreshView.as_view(), name='token_refresh')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

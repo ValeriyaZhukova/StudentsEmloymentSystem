@@ -56,6 +56,24 @@ class CustomUserSerializer(RegisterSerializer):
 
 
 class CustomUserDetailsSerializer(serializers.ModelSerializer):
+
+    password = serializers.CharField(write_only=True)
+
+    def create(self, validated_data):
+
+        user = CustomUser.objects.create(
+            email=validated_data['email'],
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
+            phone_number=validated_data['phone_number'],
+            role=validated_data['role'],
+            avatar=validated_data['avatar']
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+
+        return user
+
     class Meta:
         model = CustomUser
         fields = ('id', 'email', 'password', 'first_name', 'last_name', 'phone_number', 'role', 'avatar')
@@ -76,7 +94,7 @@ class ResumeSerializer(serializers.ModelSerializer):
     institution = InstitutionSerializer(read_only=True)
     class Meta:
         model = Resume
-        fields = ('id', 'date_of_birth', 'citizenship', 'desired_position', 'working_experience', 'education_degree', 'skills',
+        fields = ('date_of_birth', 'citizenship', 'desired_position', 'working_experience', 'education_degree', 'skills',
          'resume_file', 'student', 'city', 'main_industry', 'institution')
 
 

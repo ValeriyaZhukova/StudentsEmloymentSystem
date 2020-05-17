@@ -23,7 +23,7 @@ def upload_avatar(instance, filename):
 def upload_resume(instance, filename):
     last_dot = filename.rfind('.')
     extension = filename[last_dot:len(filename):1]
-    return 'files/resume/%s-%s-%s%s' % (instance.first_name, instance.last_name, time.time(), extension)
+    return 'files/resume/%s-%s%s' % (instance.student, time.time(), extension)
 
 
 class CustomUser(AbstractUser):
