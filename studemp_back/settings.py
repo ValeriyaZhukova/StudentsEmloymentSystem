@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-#    'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -133,7 +133,7 @@ ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/?verification=1'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'user.serializers.CustomUserDetailsSerializer',
+    'USER_DETAILS_SERIALIZER': 'common.serializers.CustomUserDetailsSerializer',
 }
 
 # Internationalization

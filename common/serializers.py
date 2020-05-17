@@ -34,7 +34,7 @@ class FacultySerializer(serializers.ModelSerializer):
 
 class CustomUserSerializer(RegisterSerializer):
     email = serializers.EmailField(required=True)
-    password = serializers.CharField(write_only=True)
+    password1 = serializers.CharField(write_only=True)
     first_name = serializers.CharField(required=False)
     last_name = serializers.CharField(required=False)
     phone_number = serializers.CharField(required=False)
@@ -46,7 +46,7 @@ class CustomUserSerializer(RegisterSerializer):
 
         return {
             'email': self.validated_data.get('email', ''),
-            'password': self.validated_data.get('password', ''),
+            'password1': self.validated_data.get('password', ''),
             'first_name': self.validated_data.get('first_name', ''),
             'last_name': self.validated_data.get('last_name', ''),
             'phone_number': self.validated_data.get('phone_number', ''),
@@ -59,7 +59,6 @@ class CustomUserDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ('id', 'email', 'password', 'first_name', 'last_name', 'phone_number', 'role', 'avatar')
-        read_only_fields = ('email',)
 
 
 class CareerCenterSerializer(serializers.ModelSerializer):
