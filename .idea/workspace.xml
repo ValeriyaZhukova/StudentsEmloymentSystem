@@ -2,25 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f634257-bab5-4218-a6f0-1cbcbe36de4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/files/resume/valeriyazhukova2000gmail.com-1589721774.6121778.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/companies/Aviata-1589719029.871364.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/companies/IITU_International_Information_Technology_University-1589714821.8185546.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/users/Qarlygash-Maulenova-1589718678.9060845.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/companies/Alma-TV-1589775673.791063.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/companies/KBTU_Kazakh-British_Technical_University-1589724725.8327343.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/companies/SDU-1589729692.8542767.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/users/Ajar-Sultanova-1589728306.246877.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/users/Azamat-Ruslanov-1589775557.6663163.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/users/Gulmira-Madieva-1589728848.9529715.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/users/Nurzhan-Daurenov-1589725080.5830235.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8214556-f981-4979-adc5-fb08b1d84f5d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8214556-f981-4979-adc5-fb08b1d84f5d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8214556-f981-4979-adc5-fb08b1d84f5d/storage_v2/_src_/database/StudEmp.2KE28w/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8214556-f981-4979-adc5-fb08b1d84f5d/storage_v2/_src_/database/StudEmp.2KE28w/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/career_center/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/career_center/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/career_center/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/career_center/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/company/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/company/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/users/Test2-Test2-1589695056.3175702.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/users/Test3-Test3-1589695205.8447475.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studemp_back/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/studemp_back/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,26 +77,6 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="StudEmp@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="StudEmp: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="company_companyindustries: table" type="69fad909:PgImplModel$LocalTable" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="StudEmp@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="StudEmp: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="company_studentvacancies: table" type="69fad909:PgImplModel$LocalTable" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -171,7 +149,22 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7defba2d" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7defba2d" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1fcf7ecf" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7defba2d" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@13334e11" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -188,7 +181,8 @@
       <option name="presentableId" value="Default" />
       <updated>1589606750128</updated>
       <workItem from="1589606751444" duration="25405000" />
-      <workItem from="1589688369684" duration="33925000" />
+      <workItem from="1589688369684" duration="40456000" />
+      <workItem from="1589772739053" duration="6364000" />
     </task>
     <servers />
   </component>

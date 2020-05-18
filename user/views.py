@@ -4,6 +4,9 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+
+from career_center.models import Institution
+from common.models import City, Industry
 from user.models import CustomUser, Resume
 from common.serializers import CustomUserDetailsSerializer, ResumeSerializer
 # Create your views here.
@@ -80,8 +83,18 @@ class ResumeAddView(APIView):
     def post(self, request, format=None):
         serializer = self.serializers_class(data=request.data)
         if serializer.is_valid():
-            serializer.save(student=request.user)
-            return Response(serializer.data)
+            try:
+                resume = Resume.objects.get(city=serializer.validated_data.get('city'),
+                                            institution=serializer.validated_data.get('institution'),
+                                            main_industry=serializer.validated_data.get('main_industry'),
+                                            student=request.user)
+                resume.save()
+                return Response(self.serializers_class(resume).data)
+            except Resume.DoesNotExist:
+                serializer.save(student=request.user, city=City.objects.get(pk=request.data["city"]),
+                                institution=Institution.objects.get(pk=request.data["institution"]),
+                                main_industry=Industry.objects.get(pk=request.data["main_industry"]))
+                return Response(serializer.data)
         else:
             Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 

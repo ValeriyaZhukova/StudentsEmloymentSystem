@@ -23,7 +23,7 @@
     <database id="6" parent="1" name="StudEmp">
       <ObjectId>19780</ObjectId>
       <Owner>studemp_user</Owner>
-      <IntrospectionStateNumber>1507</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1544</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|19839|19841|1
 sequence|table|19850|19852|1
@@ -151,7 +151,7 @@ sequence|table|20123|20125|1
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1508</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1545</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="24" parent="6" name="btree">

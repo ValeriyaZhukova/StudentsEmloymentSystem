@@ -1,8 +1,10 @@
+from django.db.models import Q
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from common import serializers
+from common.models import City, Industry
 from company.models import Company, CompanyIndustries, Vacancy, StudentVacancies
 # Create your views here.
 
@@ -41,9 +43,15 @@ class CompanyDetailView(APIView):
 
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
-        if (serializer.is_valid()):
-            serializer.save(contact_person=request.user)
-            return Response(serializer.data)
+        if serializer.is_valid():
+            try:
+                company = Company.objects.get(city=serializer.validated_data.get('main_industry'),
+                                              contact_person=request.user)
+                company.save()
+                return Response(self.serializer_class(company).data)
+            except Company.DoesNotExist:
+                serializer.save(contact_person=request.user, city=City.objects.get(pk=request.data["city"]))
+                return Response(serializer.data)
         else:
             return Response({"message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -72,6 +80,15 @@ class CompanyDetailView(APIView):
             return Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class CompanySearchView(APIView):
+    serializers_class = serializers.CompanySerializer
+
+    def get(self, request, key, format=None):
+        companies = Company.objects.filter(Q(name__contains=key))
+        serializer = self.serializers_class(companies, many=True)
+        return Response(serializer.data)
+
+
 class CompanyIndustriesView(APIView):
     serializer_class = serializers.CompanyIndustriesSerializer
 
@@ -92,8 +109,15 @@ class CompanyIndustriesDetailView(APIView):
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+            try:
+                company_ind = CompanyIndustries.objects.get(company=serializer.validated_data.get('company'),
+                                                            industry=serializer.validated_data.get('industry'))
+                company_ind.save()
+                return Response(self.serializer_class(company_ind).data)
+            except CompanyIndustries.DoesNotExist:
+                serializer.save(company=Company.objects.get(pk=request.data["company"]),
+                                industry=Industry.objects.get(pk=request.data["industry"]))
+                return Response(serializer.data)
         else:
             return Response({"message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -133,8 +157,13 @@ class VacancyDetailView(APIView):
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+            try:
+                vacancy = Vacancy.objects.get(company=serializer.validated_data.get('company'))
+                vacancy.save()
+                return Response(self.serializer_class(vacancy).data)
+            except Vacancy.DoesNotExist:
+                serializer.save(company=Company.objects.get(pk=request.data["company"]))
+                return Response(serializer.data)
         else:
             return Response({"message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -163,6 +192,24 @@ class VacancyDetailView(APIView):
             return Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class VacancySearchView(APIView):
+    serializers_class = serializers.VacancySerializer
+
+    def get(self, request, key, format=None):
+        vacancies = Vacancy.objects.filter(Q(title__contains=key))
+        serializer = self.serializers_class(vacancies, many=True)
+        return Response(serializer.data)
+
+
+class StudentVacanciesView(APIView):
+    serializer_class = serializers.StudentVacanciesSerializer
+
+    def get(self, request, vacancy_id, format=None):
+        stud_vacancy = StudentVacancies.objects.select_related('vacancy').filter(vacancy=vacancy_id)
+        serializer = self.serializer_class(stud_vacancy, many=True)
+        return Response(serializer.data)
+
+
 class StudentVacanciesDetailView(APIView):
     serializer_class = serializers.StudentVacanciesSerializer
 
@@ -178,16 +225,17 @@ class StudentVacanciesDetailView(APIView):
         serializer = self.serializer_class(stud_vacancy, many=True)
         return Response(serializer.data)
 
-    def get(self, request, vacancy_id, format=None):
-        stud_vacancy = StudentVacancies.objects.select_related('vacancy').filter(vacancy=vacancy_id)
-        serializer = self.serializer_class(stud_vacancy, many=True)
-        return Response(serializer.data)
-
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+            try:
+                stud_vacancy = StudentVacancies.objects.get(student=request.user,
+                                                            vacancy=serializer.validated_data.get('vacancy'))
+                stud_vacancy.save()
+                return Response(self.serializer_class(stud_vacancy).data)
+            except StudentVacancies.DoesNotExist:
+                serializer.save(student=request.user, vacancy=Vacancy.objects.get(pk=request.data["vacancy"]))
+                return Response(serializer.data)
         else:
             return Response({"message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 

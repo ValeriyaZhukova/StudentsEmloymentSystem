@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView, get_object_or_404
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -5,12 +6,14 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from career_center.models import Institution, CareerCenter, Faculty
+from common.models import City
 from common.serializers import InstitutionSerializer, FacultySerializer, CareerCenterSerializer
+
 
 # Create your views here.
 
 
-#Institution CRUD
+# Institution CRUD
 class InstitutionAddView(APIView):
     permission_classes = (IsAuthenticated,)
     serializers_class = InstitutionSerializer
@@ -18,8 +21,13 @@ class InstitutionAddView(APIView):
     def post(self, request, format=None):
         serializer = self.serializers_class(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+            try:
+                institution = Institution.objects.get(city=serializer.validated_data.get('city'))
+                institution.save()
+                return Response(self.serializers_class(institution).data)
+            except Institution.DoesNotExist:
+                serializer.save(city=City.objects.get(pk=request.data["city"]))
+                return Response(serializer.data)
         else:
             Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -112,7 +120,7 @@ class InstitutionDeleteView(APIView):
         return Response({'msg': 'Successfully deleted'}, status=status.HTTP_200_OK)
 
 
-#Faculty CRUD
+# Faculty CRUD
 class FacultyAddView(APIView):
     permission_classes = (IsAuthenticated,)
     serializers_class = FacultySerializer
@@ -127,7 +135,6 @@ class FacultyAddView(APIView):
             except Faculty.DoesNotExist:
                 serializer.save(institution=Institution.objects.get(pk=request.data["institution"]))
                 return Response(serializer.data)
-
         else:
             Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -220,7 +227,7 @@ class FacultyDeleteView(APIView):
         return Response({'msg': 'Successfully deleted'}, status=status.HTTP_200_OK)
 
 
-#CareerCenter CRUD
+# CareerCenter CRUD
 class CareerCenterAddView(APIView):
     permission_classes = (IsAuthenticated,)
     serializers_class = CareerCenterSerializer
@@ -228,8 +235,15 @@ class CareerCenterAddView(APIView):
     def post(self, request, format=None):
         serializer = self.serializers_class(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+            try:
+                career_center = CareerCenter.objects.get(contact_person=request.user,
+                                                         institution=serializer.validated_data.get('institution'))
+                career_center.save()
+                return Response(self.serializers_class(career_center).data)
+            except CareerCenter.DoesNotExist:
+                serializer.save(contact_person=request.user,
+                                institution=Institution.objects.get(pk=request.data["institution"]))
+                return Response(serializer.data)
         else:
             Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -320,3 +334,12 @@ class CareerCenterDeleteView(APIView):
 
         career_center.delete()
         return Response({'msg': 'Successfully deleted'}, status=status.HTTP_200_OK)
+
+
+class CareerCenterSearchView(APIView):
+    serializers_class = CareerCenterSerializer
+
+    def get(self, request, key, format=None):
+        career_centers = CareerCenter.objects.filter(Q(institution__name__contains=key))
+        serializer = self.serializers_class(career_centers, many=True)
+        return Response(serializer.data)
